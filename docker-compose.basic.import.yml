@@ -1,0 +1,25 @@
+# ------------------------------------------------------------------------------
+# Firebase Emulator for Tests local and CI
+# ------------------------------------------------------------------------------
+
+version: "3.2"
+
+services:
+
+  # -------------------------------------
+  # Firebase Emulator
+  # -------------------------------------
+  emulator:
+    volumes:
+      - ./basic.json:/app/override.json:rw
+      - import:/app/import:ro
+    entrypoint:
+      ["/app/entrypoint.sh", "run_basic_import"]
+
+volumes:
+  import:
+    driver: local
+    driver_opts:
+      type: volume
+      o: bind
+      device: "${PWD}/import"

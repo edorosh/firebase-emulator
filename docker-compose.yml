@@ -7,7 +7,7 @@ version: "3.2"
 services:
 
   # -------------------------------------
-  # Firebase Eumulator with Import option
+  # Firebase Eumulator
   # -------------------------------------
 
   emulator:

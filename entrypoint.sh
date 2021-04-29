@@ -41,13 +41,28 @@ case "$1" in
             echo "{\"projects\": {\"default\": \"local-development\"}}" | tee ./fb/.firebaserc
         fi
         cd fb
-        firebase emulators:start --only firestore,database,pubsub --import .
+        firebase emulators:start --only firestore,database,pubsub
+    ;;
+
+   run_basic_import )
+        if [ ! -f "./fb/firebase.json" ]; then
+            if [ -f "override.json" ]; then
+                cp override.json ./fb/firebase.json
+            else
+                cp basic.json ./fb/firebase.json || true
+            fi
+        fi
+        if [ ! -f "./fb/.firebaserc" ]; then
+            echo "{\"projects\": {\"default\": \"local-development\"}}" | tee ./fb/.firebaserc
+        fi
+        cd fb
+        firebase emulators:start --only firestore,database,pubsub --import ./import
     ;;
 
     run_all )
         check_credentials
         cd fb
-        firebase emulators:start --token $FIREBASE_TOKEN --project ${FIREBASE_PROJECT} --import .
+        firebase emulators:start --token $FIREBASE_TOKEN --project ${FIREBASE_PROJECT}
     ;;
 
     setup_all )
