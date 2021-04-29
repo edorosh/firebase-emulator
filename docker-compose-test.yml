@@ -7,7 +7,7 @@ services:
   # -------------------------------------
 
   emulator:
-    image: ehealthafrica/firebase-emulator:latest
+    image: edorosh/firebase-emulator-import:latest
     # volumes:
     #   # not required, but nice because it caches downloaded emulator binaries
     #   - firebase:/home/docker/.cache/firebase/emulators:rw

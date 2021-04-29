@@ -11,7 +11,7 @@ services:
   # -------------------------------------
 
   emulator:
-    image: ehealthafrica/firebase-emulator:latest
+    image: edorosh/firebase-emulator-import:latest
     build: .
     volumes:
       - ./hosted.json:/app/override.json:rw

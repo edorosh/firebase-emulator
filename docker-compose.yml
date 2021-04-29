@@ -7,11 +7,11 @@ version: "3.2"
 services:
 
   # -------------------------------------
-  # Firebase Eumulator
+  # Firebase Eumulator with Import option
   # -------------------------------------
 
   emulator:
-    image: ehealthafrica/firebase-emulator:latest
+    image: edorosh/firebase-emulator-import:latest
     build: .
     volumes:
       - ./hosted.json:/app/override.json:rw
