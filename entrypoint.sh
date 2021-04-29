@@ -44,7 +44,7 @@ case "$1" in
         firebase emulators:start --only firestore,database,pubsub
     ;;
 
-   run_basic_import )
+   run_firestore_import )
         if [ ! -f "./fb/firebase.json" ]; then
             if [ -f "override.json" ]; then
                 cp override.json ./fb/firebase.json
@@ -56,7 +56,7 @@ case "$1" in
             echo "{\"projects\": {\"default\": \"local-development\"}}" | tee ./fb/.firebaserc
         fi
         cd fb
-        firebase emulators:start --only firestore,database,pubsub --import ./import
+        firebase emulators:start --only firestore --import import
     ;;
 
     run_all )
